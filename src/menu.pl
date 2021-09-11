@@ -1,4 +1,5 @@
 :- ['positions'].
+:- ['employees'].
 
 main:-
         csv_read_file('../db/positions.csv', PositionsRows, [functor(position), arity(3)]),
@@ -13,8 +14,7 @@ menu :-
     write_ln('====================== Empresa Ficticia ======================'),
     nl,
     write_ln('1 - Listar hierarquia de cargos'),
-    write_ln('2 - Gerenciar funcionario'),
-    % listar todos funcionarios e pedir um nome, ir para um novo menu com o nome do funcionario e listar opcoes de editar(promover)/demitir(remover) o funcionario
+    write_ln('2 - Gerenciar funcionarios'),
     write_ln('0 - Sair'),
     write_ln(''),
     read(Option),
@@ -32,9 +32,11 @@ menuEmployee:-
     write_ln('====================== Menu Funcionario ======================'),
     nl,
     write_ln('1 - Listar funcionarios'),
-    write_ln('2 - Buscar por funcionario'),
-    write_ln('3 - Promover funcionario'),
-    write_ln('4 - Demitir funcionario'),
+    write_ln('2 - Listar funcionarios por cargo'),
+    write_ln('3 - Buscar um funcionario'),
+    write_ln('4 - Cadastrar novo funcionario'),
+    write_ln('5 - Promover funcionario'),
+    write_ln('6 - Demitir funcionario'),
     write_ln('0 - Voltar ao menu principal'),
     write_ln(''),
     read(OptionEmployee),
@@ -43,10 +45,12 @@ menuEmployee:-
 
 
 executeEmployee(OptionEmployee) :-  
-    OptionEmployee == 1, menuEmployee;
-    OptionEmployee == 2, menuEmployee;
-    OptionEmployee == 3, menuEmployee;
+    OptionEmployee == 1, listEmployees, menuEmployee;
+    OptionEmployee == 2, listEmployeesByPosition, menuEmployee;
+    OptionEmployee == 3, lookForEmployee, menuEmployee;
     OptionEmployee == 4, menuEmployee;
+    OptionEmployee == 5, menuEmployee;
+    OptionEmployee == 6, menuEmployee;
     OptionEmployee == 0, menu.
 
 exitProgram:-  

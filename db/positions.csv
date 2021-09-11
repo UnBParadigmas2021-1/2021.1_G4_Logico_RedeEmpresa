@@ -1,0 +1,6 @@
+1,Diretor Executivo,Ninguem
+2,Diretor de Operacoes,Diretor Executivo
+3,Diretor de Tecnologia,Diretor Operacoes
+4,Diretor Financeiro,Diretor Executivo
+5,Diretor de Marketing,Diretor Financeiro
+6,Diretor de Receita,Diretor Financeiro
