@@ -1,3 +1,4 @@
+
 menu :- consult(cargos), nl, nl,
         write(' *** Selecione uma opcao ***'), nl, nl,
         write('1 - Listar hierarquia de cargos'), nl,
