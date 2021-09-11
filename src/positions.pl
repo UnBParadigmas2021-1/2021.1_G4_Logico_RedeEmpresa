@@ -1,8 +1,17 @@
-position('Diretor Financeiro', 4).
-position('Diretor de Marketing', 5).
-position('Diretor de Operacoes', 2).
-position('Diretor Executivo', 1).
-position('Diretor de Tecnologia', 3).
-position('Diretor de Receita', 6).
+:- use_module(library(csv)).
+:- use_module(library(apply)).
+:
 
-listaCargos(R) :- R = ['Diretor Executivo','Diretor de Operacoes','Diretor de Tecnologia', 'Diretor Financeiro', 'Diretor de Marketing', 'Diretor de Receita'].
+:- dynamic position/3.
+
+
+listPositionsHierarchy:-
+        findall([Position, SeniorPosition], position(_, Position, SeniorPosition), PositionsList),
+        printList(PositionsList), nl, nl.
+
+printList([]).	
+printList([H|T]):- printItem(H), write_ln(';'), printList(T).
+
+printItem([]).
+printItem([T]):- write(T).
+printItem([H|T]):- write(H), write(" responde a "), printItem(T).

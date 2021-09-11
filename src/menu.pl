@@ -1,31 +1,60 @@
+:- ['positions'].
 
-menu :- consult(cargos), nl, nl,
-        write(' *** Selecione uma opcao ***'), nl, nl,
-        write('1 - Listar hierarquia de cargos'), nl,
-        write('2 - Listar funcionarios'), nl,
-        write('3 - Promover funcionario'), nl,
-        write('0 - Sair'), nl,
-        write(''),read(Option),
-        nl, executar(Option).
+main:-
+        csv_read_file('../db/positions.csv', PositionsRows, [functor(position), arity(3)]),
+            maplist(assert, PositionsRows),
+        csv_read_file('../db/employees.csv', EmployeesRows, [functor(employee), arity(4)]),
+            maplist(assert, EmployeesRows),
+        menu().
 
-executar(Option) :- Option == 1, getDescricaoCursos, menu;
-                    Option == 2, funcionario, menu;
-                    Option == 3, promover, menu;
-                    Option == 0, true.
 
-getDescricaoCursos() :-
-  listaCargos(PB),
-  getDescListaCargos(PB).
+menu :- 
+    write_ln("\n\n"),
+    write_ln('====================== Empresa Ficticia ======================'),
+    nl,
+    write_ln('1 - Listar hierarquia de cargos'),
+    write_ln('2 - Gerenciar funcionario'),
+    % listar todos funcionarios e pedir um nome, ir para um novo menu com o nome do funcionario e listar opcoes de editar(promover)/demitir(remover) o funcionario
+    write_ln('0 - Sair'),
+    write_ln(''),
+    read(Option),
+    write_ln("\n"),
+    execute(Option).
 
-getDescListaCargos([]).
-getDescListaCargos([X|Y]) :-
-  cargo(X, R),
-  atomic_list_concat([X, R], ' - ', RD), nl,
-  write(RD),
-  getDescListaCargos(Y).
 
-hierarquia :- write('Listando cargos...'), nl, nl.
+execute(Option) :-  Option == 1, listPositionsHierarchy, menu;
+                    Option == 2, menuEmployee;
+                    Option == 0, exitProgram.
 
-funcionario :- write('Listando funcionarios...'), nl, nl.
 
-promover :- write('Promovendo funcionario...'), nl, nl.
+menuEmployee:-
+    write_ln("\n\n"),
+    write_ln('====================== Menu Funcionario ======================'),
+    nl,
+    write_ln('1 - Listar funcionarios'),
+    write_ln('2 - Buscar por funcionario'),
+    write_ln('3 - Promover funcionario'),
+    write_ln('4 - Demitir funcionario'),
+    write_ln('0 - Voltar ao menu principal'),
+    write_ln(''),
+    read(OptionEmployee),
+    write_ln("\n"),
+    executeEmployee(OptionEmployee).
+
+
+executeEmployee(OptionEmployee) :-  
+    OptionEmployee == 1, menuEmployee;
+    OptionEmployee == 2, menuEmployee;
+    OptionEmployee == 3, menuEmployee;
+    OptionEmployee == 4, menuEmployee;
+    OptionEmployee == 0, menu.
+
+exitProgram:-  
+%    delete_file('../db/positions.csv'),
+%    delete_file('../db/employees.csv'),
+%    findall(row(Music, Gen, Ano), music(Music,Gen, Ano) ,MusicList), 
+%        csv_write_file('db/musics.csv', MusicList),
+%    findall(row(Nome, Art, Ano), album(Nome, Art, Ano) ,AlbumList), 
+%        csv_write_file('db/albuns.csv', AlbumList),
+    write_ln('Encerrando programa...'),
+    halt(0).
