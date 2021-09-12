@@ -13,7 +13,7 @@ listEmployees:-
                 -> write('Nao ha funcionarios atualmente empregados na empresa');
                    write('Os funcionarios que estao atualmente empregados na empresa sao '),
                    nl,
-                   write_ln('Matricula   -   Nome   -   Telefone'),
+                   write_ln('Nome   -   Telefone   -   Posicao'), nl,
                    printEmployeeList(EmployeesList)),
         write_ln("\n").
 
@@ -29,7 +29,7 @@ listEmployeesByPosition:-
                    write(EmployeesPosition),
                    write_ln(' sao: '),
                    nl,
-                   write_ln('Matricula   -   Nome   -   Telefone'),
+                   write_ln('Matricula   -   Nome   -   Telefone'), nl,
                    printEmployeeList(EmployeesPositionList)),
         write_ln("\n").
 
@@ -43,7 +43,7 @@ lookForEmployee:-
                    write(NameEmployee);
                    write_ln('O(s) funcionario(s) atualmente empregado(s) com o nome informado e/sao'),
                    nl,
-                   write_ln('Matricula   -   Nome   -   Telefone   -   Cargo'),
+                   write_ln('Matricula   -   Nome   -   Telefone   -   Cargo'), nl,
                    printEmployeeList(EmployeeData)),
         write_ln("\n").
 
@@ -62,7 +62,7 @@ insertIntoEmployee:-
         write_ln("Funcionario cadastrado com sucesso.").
 
 
-updateEmployee:-
+/*updateEmployee:-
         write_ln("Insira a matricula do funcionario:"),
         read(UpdateEmployeeID),
         findall([UpdateEmployeeID, Name, Phone, Position], employee(UpdateEmployeeID, Name, Phone, Position), EmployeeInfo),
@@ -73,8 +73,35 @@ updateEmployee:-
             findall(SeniorPosition, position(_, OldPosition, SeniorPosition), _),
                 retract(employee(UpdateEmployeeID, Name, Phone, OldPosition)),
                 assert(employee(UpdateEmployeeID, Name, Phone, SeniorPosition)),
-            write_ln('O funcionario foi promovido com sucesso.').
+            write_ln('O funcionario foi promovido com sucesso.'). */
+
+
+updateEmployee:-
+        write_ln("Insira a matricula do funcionario: "),
+        read(UpdateEmployeeID),
+        findall([UpdateEmployeeID, Name, Phone, Position], employee(UpdateEmployeeID, Name, Phone, Position), EmployeeInfo),
+        (length(EmployeeInfo, 0)
+            -> write('ID nao esta cadastrado.');
+                [Head|_] = EmployeeInfo, [NewId,NewName,NewPhone,OldPosition|_] = Head,
+                removeFrom('employee', [NewId, NewName, NewPhone, OldPosition], _),
+                write_ln("Qual cargo esse funcionario ira assumir: "),
+                read(UpdateEmployeePosition),
+                insertInto('employee', [NewId, NewName, NewPhone, UpdateEmployeePosition], _),
+                write_ln('O funcionario foi promovido com sucesso.')).
         
+
+/*updateEmployee:-
+        write_ln("Insira a matricula do funcionario: "),
+        read(UpdateEmployeeID),
+        findall([UpdateEmployeeID, Name, Phone, Position], employee(UpdateEmployeeID, Name, Phone, Position), EmployeeInfo),
+        %(length(EmployeeInfo, 0)
+        %    -> write('ID nao esta cadastrada.'));
+        [Head|_] = EmployeeInfo, [NewId,NewName,NewPhone,OldPosition|_] = Head,
+        removeFrom('employee', [NewId, NewName, NewPhone, OldPosition], _),
+        write_ln("Qual cargo esse funcionario ira assumir: "),
+        read(UpdateEmployeePosition),
+        insertInto('employee', [NewId, NewName, NewPhone, UpdateEmployeePosition], _),
+        write_ln('O funcionario foi promovido com sucesso.').*/
 
 
 fireEmployee:- 

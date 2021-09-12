@@ -10,7 +10,7 @@ listPositionsHierarchy:-
         printPositionsList(PositionsList), nl, nl.
 
 printPositionsList([]).	
-printPositionsList([H|T]):- printItem(H), write_ln(';'), printList(T).
+printPositionsList([H|T]):- printPositionsItem(H), write_ln(';'), printPositionsList(T).
 
 printPositionsItem([]).
 printPositionsItem([T]):- write(T).
