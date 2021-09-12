@@ -48,9 +48,9 @@ executeEmployee(OptionEmployee) :-
     OptionEmployee == 1, listEmployees, menuEmployee;
     OptionEmployee == 2, listEmployeesByPosition, menuEmployee;
     OptionEmployee == 3, lookForEmployee, menuEmployee;
-    OptionEmployee == 4, menuEmployee;
-    OptionEmployee == 5, menuEmployee;
-    OptionEmployee == 6, menuEmployee;
+    OptionEmployee == 4, insertIntoEmployee, menuEmployee;
+    OptionEmployee == 5, updateEmployee, menuEmployee;
+    OptionEmployee == 6, fireEmployee, menuEmployee;
     OptionEmployee == 0, menu.
 
 exitProgram:-  
