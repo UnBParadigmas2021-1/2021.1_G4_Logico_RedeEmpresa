@@ -48,7 +48,6 @@ executeEmployee(OptionEmployee) :-
 
 
 exitProgram:-  
-%    delete_file('../db/positions.csv'),
     delete_file('../db/employees.csv'),
     findall(row(Id, Name, Phone, Position), employee(Id, Name, Phone, Position) ,EmployeesList), 
         csv_write_file('../db/employees.csv', EmployeesList),

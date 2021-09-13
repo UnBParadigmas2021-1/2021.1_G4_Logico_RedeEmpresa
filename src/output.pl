@@ -3,7 +3,7 @@ printPositionsList([H|T]):- printPositionsItem(H), write_ln(';\n'), printPositio
 
 printPositionsItem([]).
 printPositionsItem([T]):- write(T).
-printPositionsItem([H|T]):- write(H), write(" resposnde a "), printPositionsItem(T).
+printPositionsItem([H|T]):- write(H), write(" responde a "), printPositionsItem(T).
 
 
 printEmployeeList([]).	

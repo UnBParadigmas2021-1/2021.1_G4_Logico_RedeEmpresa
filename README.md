@@ -80,7 +80,7 @@ Adicione 1 ou mais vídeos com a execução do projeto.
 
 ## Outros
 
-O programa não funcionará corretamente caso o nome dos arquivos e/ou o local deles sejam alterados, ou caso as instruções de instalação não sejam seguidas. Caso novos cargos desejem ser adicionados, ou retirados, basta modificar o arquivo "positions.csv", localizado na pasta "db" (Database).
+O programa não funcionará corretamente caso o nome dos arquivos e/ou o local deles sejam alterados, ou caso as instruções de instalação não sejam seguidas. Caso novos cargos desejem ser adicionados, ou retirados, basta modificar o arquivo "positions.csv", localizado na pasta "db" (Database). Sempre que requisitado ao usuário uma entrada do tipo "string", deve ser escrita dentro de aspas simples('), exemplo: 'Diretor de tecnologia'.
 
 ## Fontes
 

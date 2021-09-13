@@ -83,4 +83,4 @@ fireEmployee:-
         read(FireEmployeeName),
         (removeFrom('employee', [FireEmployeeID, FireEmployeeName, _, _], _)
             -> write('O funcionario "'), write(FireEmployeeName), write_ln('" foi demitido.');
-            write('O funcionario "'), write(FireEmployeeName), write_ln('" não esta cadastrado.')).
+            write('O funcionario "'), write(FireEmployeeName), write_ln('" nao esta cadastrado.')).
