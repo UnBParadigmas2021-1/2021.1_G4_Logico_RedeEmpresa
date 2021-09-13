@@ -62,21 +62,6 @@ insertIntoEmployee:-
         insertInto('employee', [EmployeeId, EmployeeName, EmployeePhone, EmployeePosition], _),
         write_ln("Funcionario cadastrado com sucesso.").
 
-
-/*updateEmployee:-
-        write_ln("Insira a matricula do funcionario:"),
-        read(UpdateEmployeeID),
-        findall([UpdateEmployeeID, Name, Phone, Position], employee(UpdateEmployeeID, Name, Phone, Position), EmployeeInfo),
-        nth0(3, EmployeeInfo, OldPosition),
-        write(OldPosition),
-        (length(EmployeeInfo, 0)
-            -> write('O funcionario não esta cadastrado.'));
-            findall(SeniorPosition, position(_, OldPosition, SeniorPosition), _),
-                retract(employee(UpdateEmployeeID, Name, Phone, OldPosition)),
-                assert(employee(UpdateEmployeeID, Name, Phone, SeniorPosition)),
-            write_ln('O funcionario foi promovido com sucesso.'). */
-
-
 updateEmployee:-
         write_ln("Insira a matricula do funcionario: "),
         read(UpdateEmployeeID),
@@ -90,20 +75,6 @@ updateEmployee:-
                 insertInto('employee', [NewId, NewName, NewPhone, UpdateEmployeePosition], _),
                 write_ln('O funcionario foi promovido com sucesso.')).
         
-
-/*updateEmployee:-
-        write_ln("Insira a matricula do funcionario: "),
-        read(UpdateEmployeeID),
-        findall([UpdateEmployeeID, Name, Phone, Position], employee(UpdateEmployeeID, Name, Phone, Position), EmployeeInfo),
-        %(length(EmployeeInfo, 0)
-        %    -> write('ID nao esta cadastrada.'));
-        [Head|_] = EmployeeInfo, [NewId,NewName,NewPhone,OldPosition|_] = Head,
-        removeFrom('employee', [NewId, NewName, NewPhone, OldPosition], _),
-        write_ln("Qual cargo esse funcionario ira assumir: "),
-        read(UpdateEmployeePosition),
-        insertInto('employee', [NewId, NewName, NewPhone, UpdateEmployeePosition], _),
-        write_ln('O funcionario foi promovido com sucesso.').*/
-
 
 fireEmployee:- 
         write_ln("Insira a matricula do funcionario:"),

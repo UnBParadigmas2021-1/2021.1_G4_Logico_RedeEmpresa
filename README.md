@@ -86,3 +86,4 @@ O programa não funcionará corretamente caso o nome dos arquivos e/ou o local d
 
 [WIN PROLOG](https://winprolog.software.informer.com/5.0/) - Para instalação do prolog no Sistema Operacional Windows. </br>
 [SWI PROLOG](https://www.swi-prolog.org/download/devel) - Para instalação do SWI prolog de acordo com o sistema operacional do seu computador. </br>
+[Prologfy](https://github.com/UnBParadigmas2020-2/2020.2_G1_Logico_Prologfy) - Para a realização deste projeto, usamos este trabalho do semeste passado como base. </br>
