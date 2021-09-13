@@ -55,10 +55,8 @@ executeEmployee(OptionEmployee) :-
 
 exitProgram:-  
 %    delete_file('../db/positions.csv'),
-%    delete_file('../db/employees.csv'),
-%    findall(row(Music, Gen, Ano), music(Music,Gen, Ano) ,MusicList), 
-%        csv_write_file('db/musics.csv', MusicList),
-%    findall(row(Nome, Art, Ano), album(Nome, Art, Ano) ,AlbumList), 
-%        csv_write_file('db/albuns.csv', AlbumList),
+    delete_file('../db/employees.csv'),
+    findall(row(Id, Name, Phone, Position), employee(Id, Name, Phone, Position) ,EmployeesList), 
+        csv_write_file('../db/employees.csv', EmployeesList),
     write_ln('Encerrando programa...'),
     halt(0).
