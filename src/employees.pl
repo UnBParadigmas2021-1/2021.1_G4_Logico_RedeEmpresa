@@ -1,8 +1,9 @@
 :- use_module(library(csv)).
 :- use_module(library(apply)).
 :- use_module(library(lists)).
-:- [api].
-:-[positions].
+:- ['api'].
+:-['positions'].
+:-['output'].
 
 :- dynamic employee/4.
 
@@ -13,7 +14,7 @@ listEmployees:-
                 -> write('Nao ha funcionarios atualmente empregados na empresa');
                    write('Os funcionarios que estao atualmente empregados na empresa sao '),
                    nl,
-                   write_ln('Nome   -   Telefone   -   Posicao'), nl,
+                   write_ln('Nome\t-\tTelefone\t-\tPosicao'), nl,
                    printEmployeeList(EmployeesList)),
         write_ln("\n").
 
@@ -29,7 +30,7 @@ listEmployeesByPosition:-
                    write(EmployeesPosition),
                    write_ln(' sao: '),
                    nl,
-                   write_ln('Matricula   -   Nome   -   Telefone'), nl,
+                   write_ln('Matricula\t-\tNome\t-\tTelefone'), nl,
                    printEmployeeList(EmployeesPositionList)),
         write_ln("\n").
 
@@ -43,7 +44,7 @@ lookForEmployee:-
                    write(NameEmployee);
                    write_ln('O(s) funcionario(s) atualmente empregado(s) com o nome informado e/sao'),
                    nl,
-                   write_ln('Matricula   -   Nome   -   Telefone   -   Cargo'), nl,
+                   write_ln('Matricula\t-\tNome\t-\tTelefone\t-\tCargo'), nl,
                    printEmployeeList(EmployeeData)),
         write_ln("\n").
 
@@ -112,12 +113,3 @@ fireEmployee:-
         (removeFrom('employee', [FireEmployeeID, FireEmployeeName, _, _], _)
             -> write('O funcionario "'), write(FireEmployeeName), write_ln('" foi demitido.');
             write('O funcionario "'), write(FireEmployeeName), write_ln('" não esta cadastrado.')).
-
-
-printEmployeeList([]).	
-printEmployeeList([H|T]):- printEmployeeItem(H), write_ln(';'), printEmployeeList(T).
-
-
-printEmployeeItem([]).
-printEmployeeItem([T]):- write(T).
-printEmployeeItem([H|T]):- write(H), write("   -   "), printEmployeeItem(T).
