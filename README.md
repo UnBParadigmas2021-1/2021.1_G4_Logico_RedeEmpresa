@@ -28,7 +28,16 @@ Consiste em um software desenvolvido em Prolog, para armazenar e gerenciar funci
 
 ## Screenshots
 
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+<p align="center">
+<img alt="" title="" src="images/screen1" width="200px" Height="240px">
+<img alt="" title="" src="images/screen2" width="200px" Height="240px">
+<img alt="" title="" src="images/screen3" width="200px" Height="240px">
+</p>
+
+<p align="center">
+<img alt="" title="" src="images/screen4" width="200px" Height="240px">
+<img alt="" title="" src="images/screen5" width="200px" Height="240px">
+</p>
 
 ## Instalação
 
