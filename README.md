@@ -85,7 +85,9 @@ Observação: sempre após qualquer linha de comando em prolog, deve ser finaliz
 
 ## Vídeo
 
-Adicione 1 ou mais vídeos com a execução do projeto.
+Um vídeo foi gravado demonstrando algumas partes do projeto pelos membros do grupo, o mesmo pode ser assistido abaixo:
+
+[![Vídeo do projeto](https://img.youtu.be/9vfrIaOvJQQ/0.jpg)](https://youtu.be/9vfrIaOvJQQ)
 
 ## Outros
 
